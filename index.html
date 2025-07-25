@@ -1,17 +1,6 @@
 
 
-    // Link de redirecionamento
-    const link = https://wa.me/${numeroAtual};
 
-    // Contador
-    let segundos = 3;
-    const contadorEl = document.getElementById("contador");
-    const checkEl = document.getElementById("check");
-
-    // Atualiza a contagem visivelmente
-    const intervalo = setInterval(() => {
-      contadorEl.textContent = segundos;
-      if (segundos === 0) {
         clearInterval(intervalo);
         contadorEl.style.display = 'none';
         checkEl.style.display = 'block';
