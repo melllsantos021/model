@@ -1,1 +1,82 @@
-,m.
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecionando.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #075E54;
+      color: #FFFFFF;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .contador {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #25D366;
+    }
+    .check {
+      font-size: 4rem;
+      color: #25D366;
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Parabéns pelo acesso!</h1>
+  <p>Você será direcionado em segundos...</p>
+  <div class="contador" id="contador">3</div>
+  <div class="check" id="check">✔</div>
+
+  <script>
+    // Lista de números rotativos
+    const numeros = ['5573991352960', '5573988240641'];
+
+    // Recupera ou inicia o índice
+    let indice = parseInt(localStorage.getItem('indiceNumero')) || 0;
+
+    // Define o número atual
+    const numeroAtual = numeros[indice];
+
+    // Atualiza o índice para próxima visita
+    const proximoIndice = (indice + 1) % numeros.length;
+    localStorage.setItem('indiceNumero', proximoIndice);
+
+    // Link de redirecionamento
+    const link = https://wa.me/${numeroAtual};
+
+    // Contador
+    let segundos = 3;
+    const contadorEl = document.getElementById("contador");
+    const checkEl = document.getElementById("check");
+
+    // Atualiza a contagem visivelmente
+    const intervalo = setInterval(() => {
+      contadorEl.textContent = segundos;
+      if (segundos === 0) {
+        clearInterval(intervalo);
+        contadorEl.style.display = 'none';
+        checkEl.style.display = 'block';
+
+        // Redireciona após 1 segundo
+        setTimeout(() => {
+          window.location.href = link;
+        }, 1000);
+      }
+      segundos--;
+    }, 1000);
+  </script>
+</body>
+</html>
