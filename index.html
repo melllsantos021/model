@@ -1,21 +1,4 @@
-esso!</h1>
-  <p>Você será direcionado em segundos...</p>
-  <div class="contador" id="contador">3</div>
-  <div class="check" id="check">✔</div>
 
-  <script>
-    // Lista de números rotativos
-    const numeros = ['5573991352960', '5573988240641'];
-
-    // Recupera ou inicia o índice
-    let indice = parseInt(localStorage.getItem('indiceNumero')) || 0;
-
-    // Define o número atual
-    const numeroAtual = numeros[indice];
-
-    // Atualiza o índice para próxima visita
-    const proximoIndice = (indice + 1) % numeros.length;
-    localStorage.setItem('indiceNumero', proximoIndice);
 
     // Link de redirecionamento
     const link = https://wa.me/${numeroAtual};
