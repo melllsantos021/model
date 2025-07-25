@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecionando.</title>
+  <title>Redirecionando...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -41,28 +41,27 @@
   <div class="check" id="check">✔</div>
 
   <script>
-    // Lista de números rotativos
-    const numeros = ['5573991352960', '5573988240641'];
+    // Lista de números de chips (WhatsApp)
+    const numeros = ['5573991352960', '5573988240641']; // Adicione mais se quiser
 
-    // Recupera ou inicia o índice
+    // Pega ou inicia o índice atual salvo no navegador
     let indice = parseInt(localStorage.getItem('indiceNumero')) || 0;
 
     // Define o número atual
     const numeroAtual = numeros[indice];
 
-    // Atualiza o índice para próxima visita
+    // Atualiza o índice no localStorage para a próxima visita
     const proximoIndice = (indice + 1) % numeros.length;
     localStorage.setItem('indiceNumero', proximoIndice);
 
-    // Link de redirecionamento
-    const link = https://wa.me/${numeroAtual};
+    // Monta o link dinâmico do WhatsApp
+    const link = `https://wa.me/${numeroAtual}`;
 
-    // Contador
+    // Configura o contador
     let segundos = 3;
     const contadorEl = document.getElementById("contador");
     const checkEl = document.getElementById("check");
 
-    // Atualiza a contagem visivelmente
     const intervalo = setInterval(() => {
       contadorEl.textContent = segundos;
       if (segundos === 0) {
@@ -70,7 +69,7 @@
         contadorEl.style.display = 'none';
         checkEl.style.display = 'block';
 
-        // Redireciona após 1 segundo
+        // Redireciona após mais 1 segundo
         setTimeout(() => {
           window.location.href = link;
         }, 1000);
